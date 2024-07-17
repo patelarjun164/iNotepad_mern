@@ -45,6 +45,8 @@ router.post('/createuser', [
         success=true;
         const options = {
             expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
+            secure: true,
+            sameSite: 'None'
         }
     
         res.cookie("token", authtoken, options);
@@ -89,6 +91,8 @@ router.post('/login', [
         success=true;
         const options = {
             expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
+            secure: true,
+            sameSite: 'None'
         }
     
         res.cookie("token", authtoken, options);
