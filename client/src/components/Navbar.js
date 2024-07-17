@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router';
+import noteContext from '../context/notes/noteContext';
 
 
 
 const Navbar = () => {
+    const context = useContext(noteContext);
+    const { user } = context;
     let navigate = useNavigate();
     const handleLogout = async () => {
         const response = await fetch("https://inotepad-backend-ruyk.onrender.com/api/auth/logout", {
@@ -37,11 +40,11 @@ const Navbar = () => {
                         </li>
 
                     </ul>
-                    <form className="d-flex">
+                    {!user ? <form className="d-flex">
                         <Link className="btn btn-success mx-1" to="/login" role="button">Login</Link>
                         <Link className="btn btn-info mx-1" to="/signup" role="button">Sign Up</Link>
-                        <button onClick={handleLogout} className="btn btn-danger">Logout</button>
-                    </form>
+                    </form> : <button onClick={handleLogout} className="btn btn-danger">Logout</button>}
+
                 </div>
             </div>
         </nav>

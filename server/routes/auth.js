@@ -132,4 +132,18 @@ router.get('/logout', fetchuser, async (req, res) => {
     }
 })
 
+//Route 5: Get User
+router.get('/getuser', fetchuser, async (req, res) => {
+    try {
+        const { token } = req.cookies;
+        const decodedData = jwt.verify(token, "imarjun");
+        const user = await User.findById(decodedData.user.id);
+
+        res.json({user,success: true});
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal server error occured.");
+    }
+})
+
 module.exports = router
