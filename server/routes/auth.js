@@ -46,6 +46,7 @@ router.post('/createuser', [
         const options = {
             expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
             secure: true,
+            httpOnly: true,
             sameSite: "None",
         }
 
@@ -92,6 +93,7 @@ router.post('/login', [
         const options = {
             expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
             secure: true,
+            httpOnly: true,
             sameSite: "None",
         }
 
@@ -119,5 +121,15 @@ router.post('/getuser', fetchuser, async (req, res) => {
     }
 })
 
+//Route 4: LoggedOut
+router.get('/logout', fetchuser, async (req, res) => {
+    try {
+        res.clearCookie('token');
+        res.json({success: true});
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal server error occured.");
+    }
+})
 
 module.exports = router

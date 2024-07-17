@@ -2,18 +2,12 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import noteContext from "../context/notes/noteContext"
 import Noteitem from './Noteitem';
 import AddNote from './AddNote';
-import { useNavigate } from 'react-router-dom';
 
 const Notes = (props) => {
     const context = useContext(noteContext);
-    const navigate = useNavigate();
     const { notes, getNotes, editNote } = context;
     useEffect(() => {
-        if(document.cookie.includes('token')){
-            getNotes();
-        } else {
-            navigate("/login");
-        }
+        getNotes();
         // eslint-disable-next-line
     }, [])
     const ref = useRef(null)
