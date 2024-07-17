@@ -2,7 +2,7 @@ import NoteContext from "./noteContext";
 import { useState } from "react";
 
 const NoteState = (props) => {
-  const host = "https://inotepad-backend.netlify.app"
+  const host = "https://inotepad-backend-ruyk.onrender.com"
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial)
 
