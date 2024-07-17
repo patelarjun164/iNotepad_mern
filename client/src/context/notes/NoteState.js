@@ -3,12 +3,14 @@ import { useState } from "react";
 
 const NoteState = (props) => {
   const host = "https://inotepad-backend-ruyk.onrender.com"
+  // const host = "http://localhost:5000"
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial)
 
   // Get all Notes
   const getNotes = async () => {
     // API Call 
+
     const response = await fetch(`${host}/api/notes/fetchallnotes`, {
       method: 'GET',
       credentials: 'include',
@@ -80,7 +82,6 @@ const NoteState = (props) => {
     }
     setNotes(newNotes);
   }
-
   return (
     <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>
       {props.children}

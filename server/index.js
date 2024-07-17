@@ -8,9 +8,10 @@ const app = express()
 const port = 5000
 
 const corsOptions = {
-  origin: 'https://inotepad-arjun.vercel.app', // Allow only requests from this origin
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow these HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+  origin: 'https://inotepad-arjun.vercel.app',
+  // origin: 'http://localhost:3000', 
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type', 'Authorization'], 
   credentials: true,
 };
 

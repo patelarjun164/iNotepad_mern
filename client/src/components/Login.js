@@ -16,10 +16,19 @@ const Login = (props) => {
             },
             body: JSON.stringify({email: credentials.email, password: credentials.password})
         });
+        // const response = await fetch("http://localhost:5000/api/auth/login", {
+        //     method: 'POST',
+        //     credentials: 'include',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({email: credentials.email, password: credentials.password})
+        // });
         const json = await response.json()
         console.log(json);
         if (json.success){
             props.showAlert("Logged in Successfully!", "success");
+            localStorage.setItem("user", credentials.email);
             navigate("/");
         }
         else{

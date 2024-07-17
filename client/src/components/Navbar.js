@@ -1,14 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router';
-import noteContext from '../context/notes/noteContext';
 
 
 
 const Navbar = () => {
-    const context = useContext(noteContext);
-    const { user } = context;
     let navigate = useNavigate();
+    let location = useLocation();
     const handleLogout = async () => {
         const response = await fetch("https://inotepad-backend-ruyk.onrender.com/api/auth/logout", {
             method: 'GET',
@@ -17,12 +15,20 @@ const Navbar = () => {
                 'Content-Type': 'application/json'
             },
         });
+        // const response = await fetch("http://localhost:5000/api/auth/logout", {
+        //     method: 'GET',
+        //     credentials: 'include',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        // });
         const json = await response.json();
         if (json.success) {
+            localStorage.removeItem("user");
             navigate("/login");
         }
     }
-    let location = useLocation();
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
@@ -40,10 +46,10 @@ const Navbar = () => {
                         </li>
 
                     </ul>
-                    {!user ? <form className="d-flex">
+                    {localStorage.getItem("user") ? <button onClick={handleLogout} className="btn btn-danger">Logout</button> : <form className="d-flex">
                         <Link className="btn btn-success mx-1" to="/login" role="button">Login</Link>
                         <Link className="btn btn-info mx-1" to="/signup" role="button">Sign Up</Link>
-                    </form> : <button onClick={handleLogout} className="btn btn-danger">Logout</button>}
+                    </form>}
 
                 </div>
             </div>
