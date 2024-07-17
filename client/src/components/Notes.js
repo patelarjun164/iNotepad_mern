@@ -10,6 +10,7 @@ const Notes = (props) => {
     const { notes, getNotes, editNote, user, getUser  } = context;
     useEffect(() => {
         getUser();
+        console.log(user);
         if (user){
             getNotes();
         } else {
