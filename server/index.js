@@ -8,7 +8,7 @@ const app = express()
 const port = 5000
 
 const corsOptions = {
-  origin: 'https://inotepad-arjun.netlify.app', // Allow only requests from this origin
+  origin: 'https://inotepad-arjun.vercel.app', // Allow only requests from this origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow these HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
   credentials: true,
