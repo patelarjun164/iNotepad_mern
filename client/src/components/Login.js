@@ -1,13 +1,10 @@
-import React, {useContext, useState} from 'react'
+import React, { useState} from 'react'
 import { useNavigate } from 'react-router';
-import noteContext from '../context/notes/noteContext';
 
 
 const Login = (props) => {
     const [credentials, setCredentials] = useState({email: "", password: ""}) 
     let navigate = useNavigate();
-    const context = useContext(noteContext);
-    const { getUser } = context;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,8 +19,6 @@ const Login = (props) => {
         const json = await response.json()
         console.log(json);
         if (json.success){
-            // Save the auth token and redirect
-            getUser();
             props.showAlert("Logged in Successfully!", "success");
             navigate("/");
         }
