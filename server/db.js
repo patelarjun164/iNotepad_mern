@@ -8,6 +8,7 @@ const connectTOMongo=()=>
         console.log("Connected TO Mongo successfull");
     })
     .catch(error => {
+        //loggin error to console
         console.log(error);
     })
 }
