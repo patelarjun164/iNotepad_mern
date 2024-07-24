@@ -8,7 +8,7 @@ const Signup = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const  {name,email,password}=credentials;
-        const response = await fetch("https://inotepad-backend-ruyk.onrender.com/api/auth/createuser", {
+        const response = await fetch("https://inotepad-backend.vercel.app/api/auth/createuser", {
             method: 'POST',
             credentials: 'include',
             headers: {

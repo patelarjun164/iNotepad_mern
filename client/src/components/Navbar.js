@@ -8,7 +8,7 @@ const Navbar = () => {
     let navigate = useNavigate();
     let location = useLocation();
     const handleLogout = async () => {
-        const response = await fetch("https://inotepad-backend-ruyk.onrender.com/api/auth/logout", {
+        const response = await fetch("https://inotepad-backend.vercel.app/api/auth/logout", {
             method: 'GET',
             credentials: 'include',
             headers: {

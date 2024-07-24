@@ -8,7 +8,7 @@ const Login = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("https://inotepad-backend-ruyk.onrender.com/api/auth/login", {
+        const response = await fetch("https://inotepad-backend.vercel.app/api/auth/login", {
             method: 'POST',
             credentials: 'include',
             headers: {
